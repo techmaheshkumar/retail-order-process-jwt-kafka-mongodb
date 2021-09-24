@@ -1,0 +1,24 @@
+@import "~@angular/material/theming";
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Roboto";
+}
+
+.main-container {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1%;
+}
+
+.snackbar-bg {
+  background-color: #AB7441;
+}
+.mat-button{
+  margin:0px !important;
+}

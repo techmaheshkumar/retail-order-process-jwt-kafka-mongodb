@@ -1,0 +1,106 @@
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    .content {
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // width: 40%;
+      .app-name {
+        margin-top: 0px;
+        padding-bottom: 10px;
+        font-size: 200%;
+        font-weight: bold;
+      }
+      .login-form {
+        padding: 5%;
+        background: #fff;
+        width: 100%;
+        box-shadow: 0 0 10px #ddd;
+        input:-webkit-autofill {
+          -webkit-box-shadow: 0 0 0 30px white inset;
+        }
+      }
+    }
+  
+    &:after {
+      content: "";
+      background: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 50%;
+      right: 0;
+    }
+    &:before {
+      content: "";
+      background: #AB7441;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+  }
+  .text-center {
+    text-align: center;
+  }
+  .w-100 {
+    width: 100%;
+  }
+
+  .file-drop-area {
+    border: 1px dashed #AB7441;
+    border-radius: 3px;
+    position: relative;
+    width: 96%;
+    margin: 0 auto;
+    padding: 20px 20px 20px 0;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+  }
+  
+  .file-drop-area.is-active {
+    background-color: #AB7441;
+  }
+  
+  .fake-btn {
+    background-color: #AB7441;
+    border: 1px solid #AB7441;
+    color: white;
+    border-radius: 3px;
+    padding: 8px 15px;
+    margin-right: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  
+  .file-msg {
+    font-size: small;
+    font-weight: 300;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: calc(100% - 130px);
+    vertical-align: middle;
+    margin-right: 20px;
+  }
+  
+  .file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+  }
+  
+  .file-input:focus {
+    outline: none;
+  }

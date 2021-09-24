@@ -1,0 +1,32 @@
+<div class="login-page" fxLayout="row" fxLayoutAlign="center stretch">
+    <div class="content">
+        <form [formGroup]="registerForm" class="login-form" fxFlex fxLayout="column">
+            <div class="text-center">
+                <h2>Registration</h2>
+            </div>
+            <ngx-spinner [fullScreen]="false" type="timer" size="medium">
+                <p class="loading">Please Wait...</p>
+            </ngx-spinner>
+            <div fxFlexFill>
+                <mat-form-field class="w-100">
+                    <input matInput placeholder="Name" formControlName="name" required>
+                </mat-form-field>
+            </div>
+            <div fxFlexFill>
+                <mat-form-field class="w-100">
+                    <input matInput type="email" placeholder="Email" formControlName="email" required>
+                </mat-form-field>
+            </div>
+            
+            <div fxFlexFill>
+                <mat-form-field class="w-100">
+                    <input matInput type="password" placeholder="Password" formControlName="password" required>
+                </mat-form-field>
+            </div>
+            <br />
+            <div fxFlexFill>
+                <button mat-raised-button color="primary" class="w-100" (click)="onSubmit()">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

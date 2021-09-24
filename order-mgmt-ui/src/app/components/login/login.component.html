@@ -1,0 +1,33 @@
+<div class="login-page" fxLayout="row" fxLayoutAlign="center stretch">
+    <div class="content">
+        <form [formGroup]="loginForm" class="login-form" fxFlex fxLayout="column" (ngSubmit)="onSubmit()">
+            <div class="text-center">
+                <img src="assets/img/logo.png" class="logo" />
+            </div>
+            <ngx-spinner [fullScreen]="false" type="timer" size="medium">
+                <p class="loading">Please Wait...</p>
+            </ngx-spinner>
+            <div fxFlexFill>
+                <mat-form-field class="w-100">
+                    <input matInput placeholder="Email" formControlName="txtEmail" required>
+                </mat-form-field>
+            </div>
+            <div fxFlexFill>
+                <mat-form-field class="w-100">
+                    <input matInput type="password" placeholder="Password" formControlName="txtPwd" required>
+                </mat-form-field>
+            </div>
+            <div fxFlexFill *ngIf="invalidLogin" class="error">
+                <div>Email or Password entered is wrong!.</div>
+            </div>
+            <br />
+            <div fxFlexFill>
+                <button mat-raised-button color="primary" class="w-100">Login</button>
+
+            </div>
+            <div fxFlexFill><br />
+                <span style="margin-right:25px;"> Don't have account?</span> <a  [routerLink]="['/register']">SignUp</a>
+            </div>
+        </form>
+    </div>
+</div>
