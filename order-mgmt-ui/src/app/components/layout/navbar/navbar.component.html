@@ -1,0 +1,51 @@
+<mat-toolbar color="primary" class="fix-nav">
+    <div class="nav-brand">
+        <a [routerLink]="['/home']" class="logo-a" fxLayout="row" fxLayoutGap="10px"><img src="assets/img/logo.png"
+                class="logo" />
+        </a>
+    </div>
+    <span class="nav-spacer">
+
+        <mat-nav-list fxLayoutAlign="center" style="width:50%">
+            <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/home']">
+                <mat-icon class="sidenav-icon">home</mat-icon>
+                <span [fxHide.xs]="true" [fxHide.md]="false">Home</span>
+            </a>
+            <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/products']">
+                <mat-icon class="sidenav-icon">store</mat-icon>
+                <span [fxHide.xs]="true" [fxHide.md]="false">Products</span>
+            </a>
+        </mat-nav-list>
+    </span>
+    <div class="nav-profile">
+
+        <div *ngIf="isLoggedIn;else elsePart">
+
+            <button class="hidden-sm" mat-icon-button matTooltip=" Click to open more options" [matMenuTriggerFor]="menu">
+                <mat-icon>account_circle</mat-icon>
+                <span [fxHide.xs]="true"> Welcome : {{name}}</span>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item [routerLink]="['/my-orders']">Your Orders</button>
+               
+            </mat-menu>
+            <button class="hidden-sm" mat-icon-button>
+                <mat-icon [matBadge]="cartSize" matBadgeColor="warn" >shopping_cart</mat-icon>
+            </button>
+            
+            <button mat-icon-button (click)="onLoggedout()" title="Log-Out">
+                <mat-icon>exit_to_app</mat-icon>
+            </button>
+        </div>
+        <ng-template #elsePart>
+            <button class="hidden-sm" mat-icon-button [routerLink]="['/cart']" *ngIf="isLoggedIn">
+                <mat-icon [matBadge]="cartSize" matBadgeColor="warn">shopping_cart</mat-icon>
+            </button>
+            
+            <button mat-icon-button [routerLink]="['/login']" title="Log-In">
+                <mat-icon aria-hidden="false">login</mat-icon>
+            </button>
+        </ng-template>
+
+    </div>
+</mat-toolbar>

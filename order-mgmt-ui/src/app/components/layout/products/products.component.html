@@ -1,0 +1,15 @@
+<div fxLayout="row" fxLayout.md="column" fxLayout.xs="column">
+   
+    <div class="content" fxFlex="100%" fxFlex.md="100%">
+        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+            <mat-spinner *ngIf="isProductLoading ;else display"></mat-spinner>
+            <ng-template #display>
+                <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let product of products">
+                    <app-product-display [product]="product"
+                        (addToCart)="onAddToCart($event)" >
+                    </app-product-display>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

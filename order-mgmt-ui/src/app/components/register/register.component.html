@@ -1,6 +1,6 @@
 <div class="login-page" fxLayout="row" fxLayoutAlign="center stretch">
     <div class="content">
-        <form [formGroup]="registerForm" class="login-form" fxFlex fxLayout="column">
+        <form [formGroup]="registerForm" class="login-form" fxFlex fxLayout="column" (ngSubmit)="onSubmit()">
             <div class="text-center">
                 <h2>Registration</h2>
             </div>
@@ -9,23 +9,22 @@
             </ngx-spinner>
             <div fxFlexFill>
                 <mat-form-field class="w-100">
-                    <input matInput placeholder="Name" formControlName="name" required>
+                    <input matInput placeholder="UserName" formControlName="txtUserName" required>
                 </mat-form-field>
             </div>
             <div fxFlexFill>
                 <mat-form-field class="w-100">
-                    <input matInput type="email" placeholder="Email" formControlName="email" required>
+                    <input matInput type="email" placeholder="Email" formControlName="txtEmail" required>
                 </mat-form-field>
             </div>
-            
             <div fxFlexFill>
                 <mat-form-field class="w-100">
-                    <input matInput type="password" placeholder="Password" formControlName="password" required>
+                    <input matInput type="password" placeholder="Password" formControlName="txtPwd" required>
                 </mat-form-field>
             </div>
             <br />
             <div fxFlexFill>
-                <button mat-raised-button color="primary" class="w-100" (click)="onSubmit()">Submit</button>
+                <button mat-raised-button color="primary" class="w-100">Submit</button>
             </div>
         </form>
     </div>

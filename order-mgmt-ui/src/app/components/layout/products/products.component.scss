@@ -1,0 +1,16 @@
+.content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    width: 200px;
+}
+
+::ng-deep .mat-icon{
+    height:30px !important;
+    width:20px !important;
+}
+
+mat-card-content{
+    font-size: 13px;
+}

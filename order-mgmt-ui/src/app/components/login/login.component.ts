@@ -14,8 +14,9 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   invalidLogin = false;
 
-  // tslint:disable-next-line: max-line-length
-  constructor(private router: Router, private formBuilder: FormBuilder, private service: UserService, private spinner: NgxSpinnerService) { }
+  constructor(private router: Router,
+              private formBuilder: FormBuilder, private service: UserService, 
+              private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -29,20 +30,15 @@ export class LoginComponent implements OnInit {
       return;
     }
     const payload = {
-      email: this.loginForm.controls.txtEmail.value,
+      username: this.loginForm.controls.txtEmail.value,
       password: this.loginForm.controls.txtPwd.value
     };
     this.spinner.show();
-    this.service.login(payload).subscribe(data => {
-      if (data.status === 200) {
-        localStorage.setItem('token', data.result.accessToken);
-        localStorage.setItem('name', data.result.name);
-        localStorage.setItem('roleName', data.result.role.name);
-        localStorage.setItem('user', JSON.stringify(data.result));
-        this.service.currentUser$.next(data.result);
-        localStorage.setItem('id', data.result.id + '');
-        localStorage.setItem('roleId', data.result.role.id + '');
-
+    this.service.login(payload).subscribe(result => {
+      if (result.status === 200) {
+        localStorage.setItem('token', result.data.token);
+        localStorage.setItem('name', result.data.username);
+        localStorage.setItem('user', JSON.stringify(result.data));
         this.spinner.hide();
         this.router.navigate(['/home']);
       } else {

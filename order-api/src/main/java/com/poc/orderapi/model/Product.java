@@ -4,7 +4,6 @@
 package com.poc.orderapi.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -23,7 +22,7 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 69666569932697853L;
 
 	@Id
-	private Long id;
+	private String id;
 
 	private String name;
 
@@ -32,8 +31,4 @@ public class Product implements Serializable {
 	private double price;
 
 	private String description;
-
-	private Date createdTS;
-
-	private Date updatedTS;
 }

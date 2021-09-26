@@ -1,0 +1,122 @@
+:host {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .nav-brand {
+    width: 25%;
+    font-size: 100%;
+    font-weight: bolder;
+    margin-top: 5px;
+    color: #fff;
+  }
+  
+  .logo {
+    width: 38%;
+    height: 12%;
+  }
+  
+  .logo-a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .logo-text {
+    margin-top: 5px;
+  }
+  
+  .nav-profile {
+    width: 30%;
+    color: #fff;
+    text-align: right;
+  }
+  
+  .topnav-icon {
+    text-decoration: none;
+    display: flex;
+    color: #fff;
+  }
+  
+  .nav-spacer {
+    width: 45%;
+  }
+  
+  .visible-md {
+    display: none;
+  }
+  .visible-sm {
+    display: none;
+  }
+  
+  .mat-icon-button {
+    width: auto !important;
+    margin-right: 5%;
+  }
+  
+  .mat-nav-list {
+    a {
+      .mat-icon {
+        margin-right: 10px;
+      }
+      display: block;
+      color: #fff;
+    }
+    a:hover {
+      .mat-icon {
+        margin-right: 10px;
+      }
+      display: block;
+      background-color: #AB7441;
+      color: #FFFFFF;
+    }
+    .active {
+      background-color: #FFFFFF;
+      color: black;
+    }
+  }
+  
+  @media screen and (max-width: 992px) {
+    .visible-md {
+      display: block;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .visible-sm {
+      display: block;
+    }
+    .nav-brand {
+      width: 50%;
+    }
+  
+    .logo {
+      width: 10%;
+    }
+  
+    .nav-profile {
+      width: 50%;
+      text-align: center;
+    }
+  }
+  
+  @media screen and (max-width: 375px) {
+    .nav-brand {
+      width: 50%;
+    }
+  
+    .logo {
+      width: 25%;
+    }
+  }
+  
+  @media screen and (max-width: 414px) {
+    .nav-brand {
+      width: 50%;
+    }
+    .logo {
+      width: 25%;
+    }
+  }

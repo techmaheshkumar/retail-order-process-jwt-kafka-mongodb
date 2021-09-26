@@ -23,6 +23,7 @@
     "@angular/flex-layout": "latest",
     "@angular/material": "11.0.3",
     "@angular/material-moment-adapter": "^11.0.3",
+    "@ngmodule/material-carousel": "^0.6.0",
     "ngx-spinner": "^10.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

@@ -1,0 +1,13 @@
+<div fxLayout="column">
+  <br />
+  <div fxFlex>
+    <mat-carousel timings="250ms ease-in" [autoplay]="autoplay" [interval]="this.interval" [color]="this.color"
+      [maxWidth]="this.maxWidth" [proportion]="this.proportion" [slides]="this.slides" [loop]="this.loop"
+      [hideArrows]="this.hideArrows" [hideIndicators]="this.hideIndicators" [useKeyboard]="this.useKeyboard"
+      [useMouseWheel]="this.useMouseWheel" [orientation]="this.orientation">
+      <mat-carousel-slide #matCarouselSlide *ngFor="let slide of slidesList; let i = index"
+        image="./../assets/img/banner.jpg" overlayColor="#00000040" [hideOverlay]="false"></mat-carousel-slide>
+    </mat-carousel>
+  </div>
+  <br />
+</div>

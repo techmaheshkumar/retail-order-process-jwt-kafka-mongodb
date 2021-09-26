@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Order } from '../shared/model/order';
+import { Responses } from '../shared/model/response';
 
 @Injectable({
     providedIn: 'root'
@@ -16,8 +18,9 @@ export class OrderService {
         const url = this.baseUrl;
         return this.http.post<any>(url, value);
     }
-    getAllOrder(userId: string): Observable<Response<Order>> {
-        const url = this.baseUrl + '/orders/' + userId;
-        return this.http.get<Response<Order>>(url);
+
+    getAllOrder(userId: string): Observable<Responses<Order>> {
+        const url = this.baseUrl + '/' + userId;
+        return this.http.get<Responses<Order>>(url);
     }
 }

@@ -17,7 +17,6 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
   user!: User;
-  imgFile: any;
 
   constructor(private formBuilder: FormBuilder,
               private spinner: NgxSpinnerService,
@@ -27,16 +26,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      name: [''],
-      email: [''],
-      password: ['']
+      txtUserName: [''],
+      txtEmail: [''],
+      txtPwd: ['']
     });
-  }
-
-  onImgFileChange(event: any): void {
-    if (event.target.files.length > 0) {
-      this.imgFile = event.target.files[0];
-    }
   }
 
   onSubmit(): void {
@@ -45,22 +38,25 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.spinner.show();
-    const formData: FormData = new FormData();
-    this.user = this.registerForm.value;
     const role = new Role();
-    role.id = 2;
-    this.user.role = role;
+    role.name = 'USER';
+    const payload = {
+      username: this.registerForm.controls.txtUserName.value,
+      email: this.registerForm.controls.txtEmail.value,
+      password: this.registerForm.controls.txtPwd.value,
+      roles: [
+        role
+      ]
+    };
 
-    const userData = JSON.stringify(this.user);
-    formData.append('user', userData);
-    this.service.create(formData).subscribe(result => {
-      if (result.status === 200) {
+    this.service.create(payload).subscribe(result => {
+      if (result.status === 201) {
         this.spinner.hide();
         this.snackBar.open('User created Successfully', 'Ok', SnackBar.getSnackBarConfig());
         this.router.navigate(['/login']);
       } else {
         this.spinner.hide();
-        this.snackBar.open('User Creation Failed', 'Ok', SnackBar.getSnackBarConfig());
+        this.snackBar.open(result.data, 'Ok', SnackBar.getSnackBarConfig());
         console.log('Something went wrong !', result.message);
       }
     }, err => {

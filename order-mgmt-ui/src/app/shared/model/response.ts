@@ -1,11 +1,11 @@
-export interface Response<T> {
-    status: number;
-    message: string;
-    result: T[];
-  }
+export interface Responses<T> {
+  status: number;
+  message: string;
+  data: T[];
+}
 
-export interface ResponseSingle<T> {
-    status: number;
-    message: string;
-    result: T;
-  }
+export interface Response<T> {
+  status: number;
+  message: string;
+  data: T;
+}
