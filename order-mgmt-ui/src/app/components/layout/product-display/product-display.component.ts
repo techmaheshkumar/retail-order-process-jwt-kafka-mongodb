@@ -24,7 +24,6 @@ export class ProductDisplayComponent implements OnInit {
 
   @Output() addToCart = new EventEmitter<Product>();
 
-  private sub: any;
   public slidesList = new Array<never>(1);
   public parentHeight = 'auto';
   public timings = '250ms ease-in';
@@ -46,6 +45,7 @@ export class ProductDisplayComponent implements OnInit {
   public orientation: Orientation = 'ltr';
   public log: string[] = [];
   public cartData: Cart[] = [];
+  public qty = 1;
 
   constructor(public router: Router) {
   }
@@ -55,6 +55,7 @@ export class ProductDisplayComponent implements OnInit {
 
   public addToCartAction(): void {
     if (isLoggedInUser()) {
+      this.prod.qty = this.qty;
       this.addToCart.emit(this.prod);
     }
     else {
@@ -64,14 +65,7 @@ export class ProductDisplayComponent implements OnInit {
 
   public fillCartDetails(_product: Product): Product {
     const cartData: Cart[] = this.cartData;
-    const cartProd = cartData.filter(fp => fp.product.id == _product.id);
-
-    if (cartProd && cartProd.length > 0) {
-      // _product.inCart = true;
-      // _product._cartQty = cartProd[0].qty;
-      // _product.cartId = cartProd[0].id;
-    }
-
+    const cartProd = cartData.filter(fp => fp.product.id === _product.id);
     return _product;
   }
 

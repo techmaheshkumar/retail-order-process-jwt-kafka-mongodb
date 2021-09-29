@@ -4,6 +4,7 @@
 package com.poc.orderprocessapi.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,6 +32,8 @@ public class Order implements Serializable {
 	private Double totalPrice;
 
 	private String userId;
+	
+	private Date date;
 
 	private OrderStatusEnum status;
 

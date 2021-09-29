@@ -2,7 +2,7 @@
     <mat-card-header>
         <mat-card-title> {{prod?.name}}</mat-card-title>
     </mat-card-header>
-    
+
     <mat-carousel timings="250ms ease-in" [autoplay]="autoplay" [interval]="this.interval" [color]="this.color"
         [maxWidth]="this.maxWidth" [proportion]="this.proportion" [slides]="this.slides" [loop]="this.loop"
         [hideArrows]="this.hideArrows" [hideIndicators]="this.hideIndicators" [useKeyboard]="this.useKeyboard"
@@ -21,26 +21,26 @@
             <div fxFlex>
                 <div fxLayout="row" *ngIf="!disableQty; else woQty">
                     <div style="font-weight: bold;text-align:center" fxFlex="50">
-                        {{prod?.price | currency:'INR':true}}</div>
+                        {{prod?.price | currency:'INR'}}</div>
                     <div fxFlex="20">
                         <mat-label>Qty.</mat-label>
                     </div>
                     <div fxFlex="30">
-                            <input type='number' class="qty" value=0 matInput placeholder="qty">
+                        <input type='number' class="qty" [(ngModel)]="qty" matInput placeholder="qty">
                     </div>
                 </div>
                 <ng-template #woQty>
                     <div fxLayout="row">
                         <div style="font-weight: bold;text-align:center" fxFlex="100">
-                            {{prod?.price | currency:'INR':true}}</div>
+                            {{prod?.price | currency:'INR'}}</div>
                     </div>
                 </ng-template>
             </div>
-            <div fxFlex >
+            <div fxFlex>
                 <hr />
                 <button mat-button (click)="addToCartAction()" title="Add to Cart">
-                        <mat-icon>shopping_cart_outline</mat-icon>
-                </button> 
+                    <mat-icon>shopping_cart_outline</mat-icon>
+                </button>
             </div>
         </div>
     </mat-card-actions>

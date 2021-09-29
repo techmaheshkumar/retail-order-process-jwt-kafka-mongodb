@@ -14,12 +14,11 @@ export class OrderService {
 
     constructor(private http: HttpClient) { }
 
-    addToOrder(value: Order): Observable<any> {
-        const url = this.baseUrl;
-        return this.http.post<any>(url, value);
+    placeOrder(value: Order): Observable<any> {
+        return this.http.put<any>(this.baseUrl, value);
     }
 
-    getAllOrder(userId: string): Observable<Responses<Order>> {
+    getOrders(userId: string): Observable<Responses<Order>> {
         const url = this.baseUrl + '/' + userId;
         return this.http.get<Responses<Order>>(url);
     }

@@ -34,7 +34,11 @@ export class ProductsComponent implements OnInit {
   }
 
   onAddToCart(product: Product): void {
-    this.productService.cart$.next(product);
+    product.total = product.qty * product.price;
+    this.productService.addToCart(product);
+    this.snackBar.open('Selected Product added to Cart', 'Success', {
+      duration: 2000,
+    });
   }
 
 }

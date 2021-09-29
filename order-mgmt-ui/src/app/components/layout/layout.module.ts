@@ -15,6 +15,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { ProductDisplayComponent } from './product-display/product-display.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { ProductsComponent } from './products/products.component';
+import { CartDetailComponent } from './cart-detail/cart-detail.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -34,7 +36,9 @@ import { ProductsComponent } from './products/products.component';
         NavbarComponent,
         HomeComponent,
         ProductDisplayComponent,
-        ProductsComponent
+        ProductsComponent,
+        CartDetailComponent,
+        MyOrdersComponent
     ],
     providers: [],
     entryComponents: [

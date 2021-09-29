@@ -1,13 +1,10 @@
-export class OrderItem {
-    public productId!: number;
-    public qty!: number;
-    public price!: number;
-}
+import { OrderItem } from './order-item';
 
-export interface Order {
-    id: number;
-    userId: number;
-    orderItems: OrderItem[];
-    totalPrice: number;
-    status: string;
+export class Order {
+    public id!: string;
+    public userId!: string;
+    public orderItems!: OrderItem[];
+    public totalPrice!: number;
+    public status!: string;
+    public date: Date = new Date();
 }

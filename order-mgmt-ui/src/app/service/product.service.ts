@@ -13,17 +13,29 @@ export class ProductService {
 
     baseUrl = environment.apiUrl + 'products';
 
-    public cart$: BehaviorSubject<Product | null> = new BehaviorSubject<Product | null>(null);
+    public cart$: BehaviorSubject<Product[] | null> = new BehaviorSubject<Product[] | null>(null);
 
     constructor(private http: HttpClient) { }
+
+    addToCart(product: Product): void {
+        if (this.cart$ && this.cart$.value) {
+            const products = this.cart$.value;
+            products.push(product);
+            this.cart$.next(products);
+        } else {
+            const products: Product[] = [];
+            products.push(product);
+            this.cart$.next(products);
+        }
+    }
+
+    getCart(): any {
+        return this.cart$.value;
+    }
 
     fetchAllProducts(): Observable<Responses<Product>> {
         const url = this.baseUrl;
         return this.http.get<Responses<Product>>(url).pipe(map(p => {
-            // p.result.forEach(p1 => {
-            //    // p1._cartQty = 1;
-            //   //  p1.inCart = false;
-            // });
             return p;
         }));
     }

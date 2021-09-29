@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       if (result.status === 200) {
         localStorage.setItem('token', result.data.token);
         localStorage.setItem('name', result.data.username);
+        localStorage.setItem('id', result.data.id);
         localStorage.setItem('user', JSON.stringify(result.data));
         this.spinner.hide();
         this.router.navigate(['/home']);

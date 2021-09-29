@@ -1,0 +1,33 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+tr {
+    height: 40px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+th {
+    border: 1px solid #ddd;
+    padding: 0px;
+    font-weight: bolder;
+}
+td {
+    text-align: left;
+}
+.end {
+    padding-right: 10px;
+}
+
+.order-btn{
+    float:right;
+}
+

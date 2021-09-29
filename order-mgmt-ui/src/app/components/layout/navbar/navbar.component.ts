@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { isLoggedInUser, getUser } from 'src/app/shared/util/storage.util';
+import { getUser } from 'src/app/shared/util/storage.util';
 import { UserService } from 'src/app/service/user.service';
 import { User } from 'src/app/shared/model/user';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,16 +17,14 @@ export class NavbarComponent implements OnInit {
   isLoggedIn = false;
   roleId = 0;
   public cartSize = 0;
-  constructor(public router: Router, public service: UserService) {
+  constructor(public router: Router, public service: UserService, private prodService: ProductService) {
     if (localStorage.getItem('token')) {
       this.isLoggedIn = true;
     }
-
     if (getUser()) {
       const user: User = JSON.parse(JSON.stringify(getUser()));
       this.service.currentUser$.next(user);
     }
-    this.hasAdminAccess();
   }
 
   ngOnInit(): void {
@@ -34,26 +33,13 @@ export class NavbarComponent implements OnInit {
     this.name = userName !== null ? userName.toString() : '';
     const role = localStorage.getItem('roleId');
     this.roleId = role !== null ? +role : 0;
-  }
-
-  hasAdminAccess() {
-    const currentUser = this.service.currentUser$.value;
-    this.service.currentUser$.subscribe(
-      (data: User | null) => {
-        if (data) {
-          const data1 = localStorage.getItem('roleName')
-          // let temp =Object.assign(new User(), data);
-          //console.log(temp)
-          if (data1) {
-            if (isLoggedInUser() && currentUser && data1 === "User")
-              this.enableAdmin = true;
-          }
-
-        }
-
+    this.prodService.cart$.subscribe((products) => {
+      if (products) {
+        this.cartSize = products.length;
+      } else {
+        this.cartSize = 0;
       }
-    )
-
+    });
   }
 
   isToggled(): boolean {
