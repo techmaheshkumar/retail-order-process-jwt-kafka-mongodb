@@ -21,7 +21,7 @@ export class UserService {
   }
 
   create(payload: any): Observable<Response<string>> {
-    return this.http.put<Response<string>>(this.baseUrl + '/signup', payload);
+    return this.http.post<Response<string>>(this.baseUrl + '/signup', payload);
   }
 
 }

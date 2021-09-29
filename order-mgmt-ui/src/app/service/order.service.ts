@@ -15,7 +15,7 @@ export class OrderService {
     constructor(private http: HttpClient) { }
 
     placeOrder(value: Order): Observable<any> {
-        return this.http.put<any>(this.baseUrl, value);
+        return this.http.post<any>(this.baseUrl, value);
     }
 
     getOrders(userId: string): Observable<Responses<Order>> {
